@@ -46,6 +46,24 @@
 			 
 			                }
 			        });
+			        
+				$.ajax({
+			                type : 'PUT',
+			                url : 'http://orion.lab.fi-ware.org:1026/ngsi10/contextEntities/bus:000002/attributes/longitude',
+			                 crossDomain : true,
+			                data : '{"value" : "600.00"}', 
+			                dataType : 'json',
+			                contentType: "application/json",
+			                success : function(data){
+			                   $('#h2msg').append(JSON.stringify(data));
+			                    alert(JSON.stringify(data));
+			                },
+			                error : function(XMLHttpRequest,textStatus, errorThrown) { 
+			                  alert("Error status :"+textStatus);  
+			                  alert("Error type :"+errorThrown);  
+			 
+			                }
+			        });        
 			
 			});
 		</script>
