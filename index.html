@@ -13,11 +13,15 @@
 	<body>
   		<h1 id="Lat">Hola Mundo</h1>
         <h1 id="Long">Hola Mundo</h1>
-        <input type="button" id="Posicionactual" value ="Obtener Posicion Actual" onclick="obtenerPosBus();">
+        <input type="button" id="Posicionactual" value ="Obtener Posicion Actual" onclick="guardarPosBus();">
 
 <script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript">
-			
+        
+        $(document).ready(function() {
+        	obtenerPosBus();
+        });
+        	
 	function obtenerPosBus() {
 
 	        var Geo={};
@@ -42,58 +46,62 @@
 	            $('#Long').html(lng);
 	        }
 	        
-
-			
-			$(document).ready(function() {
-
-			//var object.value ='67';
-			//var data; 
-			//data.value  = '67';
-			$.ajaxSetup({
-			  beforeSend: function(request) {
-			    request.setRequestHeader("X-Auth-Token","qkvLsZ0dNe11yjHV9a5oZVBJbwnucz9cy42ifaSksrAf68rgjqy4KYiIRCiB3YGverQ-K7d0_oQ4bwakPvxm-w");
-			    request.setRequestHeader("Accept","application/json");
-			    request.setRequestHeader("Content-Type","application/json");
-			  }
-			});
-			
+	        //});
+	      
+	  };
+	  
+	  function guardarPosBus(){
+  	
+		//var object.value ='67';
+		//var data; 
+		//data.value  = '67';
+		var latitude =  {"value" : "500.00"};
+		$.ajaxSetup({
+		  beforeSend: function(request) {
+		    request.setRequestHeader("X-Auth-Token","qkvLsZ0dNe11yjHV9a5oZVBJbwnucz9cy42ifaSksrAf68rgjqy4KYiIRCiB3YGverQ-K7d0_oQ4bwakPvxm-w");
+		    request.setRequestHeader("Accept","application/json");
+		    request.setRequestHeader("Content-Type","application/json");
+		  }
+		});
+		
+		$.ajax({
+		                type : 'PUT',
+		                url : 'http://orion.lab.fi-ware.org:1026/ngsi10/contextEntities/bus:000002/attributes/latitude',
+		                 crossDomain : true,
+		                data : latitude, 
+		                dataType : 'json',
+		                contentType: "application/json",
+		                success : function(data){
+		                   $('#Lat').append(JSON.stringify(data));
+		                    alert(JSON.stringify(data));
+		                },
+		                error : function(XMLHttpRequest,textStatus, errorThrown) { 
+		                  alert("Error status :"+textStatus);  
+		                  alert("Error type :"+errorThrown);  
+		 
+		                }
+		        });
+		        
 			$.ajax({
-			                type : 'PUT',
-			                url : 'http://orion.lab.fi-ware.org:1026/ngsi10/contextEntities/bus:000002/attributes/latitude',
-			                 crossDomain : true,
-			                data : '{"value" : "500.00"}', 
-			                dataType : 'json',
-			                contentType: "application/json",
-			                success : function(data){
-			                   $('#Lat').append(JSON.stringify(data));
-			                    alert(JSON.stringify(data));
-			                },
-			                error : function(XMLHttpRequest,textStatus, errorThrown) { 
-			                  alert("Error status :"+textStatus);  
-			                  alert("Error type :"+errorThrown);  
-			 
-			                }
-			        });
-			        
-				$.ajax({
-			                type : 'PUT',
-			                url : 'http://orion.lab.fi-ware.org:1026/ngsi10/contextEntities/bus:000002/attributes/longitude',
-			                 crossDomain : true,
-			                data : '{"value" : "600.00"}', 
-			                dataType : 'json',
-			                contentType: "application/json",
-			                success : function(data){
-			                   $('#Long').append(JSON.stringify(data));
-			                    alert(JSON.stringify(data));
-			                },
-			                error : function(XMLHttpRequest,textStatus, errorThrown) { 
-			                  alert("Error status :"+textStatus);  
-			                  alert("Error type :"+errorThrown);  
-			 
-			                }
-			        });        
-			
-			});
-	        });	
+		                type : 'PUT',
+		                url : 'http://orion.lab.fi-ware.org:1026/ngsi10/contextEntities/bus:000002/attributes/longitude',
+		                 crossDomain : true,
+		                data : '{"value" : "600.00"}', 
+		                dataType : 'json',
+		                contentType: "application/json",
+		                success : function(data){
+		                   $('#Long').append(JSON.stringify(data));
+		                    alert(JSON.stringify(data));
+		                },
+		                error : function(XMLHttpRequest,textStatus, errorThrown) { 
+		                  alert("Error status :"+textStatus);  
+		                  alert("Error type :"+errorThrown);  
+		 
+		                }
+		        });   
+	  	
+	        };
+	  
+	  
 		</script>
 	</body>
