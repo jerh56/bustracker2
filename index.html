@@ -44,6 +44,9 @@
 	        function populateHeader(lat, lng){
 	            $('#Lat').html(lat);
 	            $('#Long').html(lng);
+	            
+	            $('#Lat').val(lat);
+	            $('#Long').val(lng);
 	        }
 	        
 	        //});
@@ -55,8 +58,8 @@
 		//var object.value ='67';
 		//var data; 
 		//data.value  = '67';
-		var latitude =  {"value" : '"' + $("#Lat").val() + '"'};
-		var longitude = {"value" : '"' + $("#Long").val() + '"' };
+		var latitude =  {"value" : $("#Lat").val()};
+		var longitude = {"value" : $("#Long").val()};
 		$.ajaxSetup({
 		  beforeSend: function(request) {
 		    request.setRequestHeader("X-Auth-Token","qkvLsZ0dNe11yjHV9a5oZVBJbwnucz9cy42ifaSksrAf68rgjqy4KYiIRCiB3YGverQ-K7d0_oQ4bwakPvxm-w");
