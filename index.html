@@ -55,7 +55,8 @@
 		//var object.value ='67';
 		//var data; 
 		//data.value  = '67';
-		var latitude =  {"value" : "500.00"};
+		var latitude =  {"value" : "200.00"};
+		var longitude = {"value" : "700.00"};
 		$.ajaxSetup({
 		  beforeSend: function(request) {
 		    request.setRequestHeader("X-Auth-Token","qkvLsZ0dNe11yjHV9a5oZVBJbwnucz9cy42ifaSksrAf68rgjqy4KYiIRCiB3YGverQ-K7d0_oQ4bwakPvxm-w");
@@ -86,7 +87,7 @@
 		                type : 'PUT',
 		                url : 'http://orion.lab.fi-ware.org:1026/ngsi10/contextEntities/bus:000002/attributes/longitude',
 		                 crossDomain : true,
-		                data : '{"value" : "600.00"}', 
+		                data : JSON.stringify(longitude), 
 		                dataType : 'json',
 		                contentType: "application/json",
 		                success : function(data){
