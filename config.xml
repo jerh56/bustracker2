@@ -16,6 +16,7 @@
     <author href="https://blackbridge3rc.com" email="jerh56@gmail.com">
         Juan Ernesto Ramos
     </author>
+    <icon src="icon.png" />
     <gap:platform name="android" />
     <preference name="android-targetSdkVersion" value="16" />
     <preference name="phonegap-version" value="3.3.0" />
