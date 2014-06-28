@@ -11,8 +11,8 @@
 	</head>
 
 	<body>
-  		<h1 id="h1msg">Hola Mundo</h1>
-        <h1 id="h2msg">Hola Mundo</h1>
+  		<h1 id="Lat">Hola Mundo</h1>
+        <h1 id="Long">Hola Mundo</h1>
         <input type="button" id="Posicionactual" value ="Obtener Posicion Actual" onclick="obtenerPosBus();">
 
 <script type="text/javascript" src="jquery.js"></script>
@@ -65,7 +65,7 @@
 			                dataType : 'json',
 			                contentType: "application/json",
 			                success : function(data){
-			                   $('#h1msg').append(JSON.stringify(data));
+			                   $('#Lat').append(JSON.stringify(data));
 			                    alert(JSON.stringify(data));
 			                },
 			                error : function(XMLHttpRequest,textStatus, errorThrown) { 
@@ -83,7 +83,7 @@
 			                dataType : 'json',
 			                contentType: "application/json",
 			                success : function(data){
-			                   $('#h2msg').append(JSON.stringify(data));
+			                   $('#Long').append(JSON.stringify(data));
 			                    alert(JSON.stringify(data));
 			                },
 			                error : function(XMLHttpRequest,textStatus, errorThrown) { 
