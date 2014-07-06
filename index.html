@@ -11,8 +11,8 @@
 	</head>
 
 	<body>
-  		<h1 id="Lat">Hola Mundo</h1>
-        <h1 id="Long">Hola Mundo</h1>
+  		<h1 id="Lat">Esperando Latitud... </h1>
+        <h1 id="Long">Esperando Longitud... </h1>
         <input type="button" id="Posicionactual" value ="Obtener Posicion Actual" onclick="obtenerPosBus();;">
         <input type="button" id="Posicionactual" value ="Guardar Posicion Actual" onclick="guardarPosBus();">
 
@@ -45,8 +45,8 @@
 	        }
 	
 	        function populateHeader(lat, lng){
-	            $('#Lat').html(lat);
-	            $('#Long').html(lng);
+	            $('#Lat').html("Latitud: " + lat);
+	            $('#Long').html("Longitud: " + lng);
 	            
 	            $('#Lat').val(lat);
 	            $('#Long').val(lng);
