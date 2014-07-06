@@ -23,6 +23,7 @@
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.geolocation" version="0.3.7" />
     <plugin name="Geolocation" value="org.apache.cordova.geolocation.Geolocation" />
+    <plugin name="Geolocation" value="org.apache.cordova.geolocation.Geolocation" />
 
 
 </widget>
