@@ -12,103 +12,100 @@
 
 	<body>
   		<h1 id="Lat">Esperando Latitud... </h1>
-        <h1 id="Long">Esperando Longitud... </h1>
-        <input type="button" id="Posicionactual" value ="Obtener Posicion Actual" onclick="obtenerPosBus();;">
-        <input type="button" id="Posicionactual" value ="Guardar Posicion Actual" onclick="guardarPosBus();">
+        	<h1 id="Long">Esperando Longitud... </h1>
+        	<input type="button" id="Posicionactual" value ="Obtener Posicion Actual" onclick="obtenerPosBus();;">
+        	<input type="button" id="Posicionactual" value ="Guardar Posicion Actual" onclick="guardarPosBus();">
 
-<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript">
-        
-        $(document).ready(function() {
-        	obtenerPosBus();
-        });
-        	
-	function obtenerPosBus() {
-
-	        var Geo={};
-	
-	var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
-	
-	        if (navigator.geolocation) {
-	           navigator.geolocation.watchPosition(success, error, options);
-	        }
-	
-	        //Get the latitude and the longitude;
-	        function success(position) {
-	            Geo.lat = position.coords.latitude;
-	            Geo.lng = position.coords.longitude;
-	            populateHeader(Geo.lat, Geo.lng);
-	        }
-	
-	        function error(){
-	            console.log("Geocoder failed");
-	        }
-	
-	        function populateHeader(lat, lng){
-	            $('#Lat').html("Latitud: " + lat);
-	            $('#Long').html("Longitud: " + lng);
-	            
-	            $('#Lat').val(lat);
-	            $('#Long').val(lng);
-	        }
-	        
-	        //});
-	      
-	  };
-	  
-	  function guardarPosBus(){
-  	
-		//var object.value ='67';
-		//var data; 
-		//data.value  = '67';
-		var latitude =  {"value" : $("#Lat").val()};
-		var longitude = {"value" : $("#Long").val()};
-		$.ajaxSetup({
-		  beforeSend: function(request) {
-		    request.setRequestHeader("X-Auth-Token","qkvLsZ0dNe11yjHV9a5oZVBJbwnucz9cy42ifaSksrAf68rgjqy4KYiIRCiB3YGverQ-K7d0_oQ4bwakPvxm-w");
-		    request.setRequestHeader("Accept","application/json");
-		    request.setRequestHeader("Content-Type","application/json");
-		  }
-		});
-		
-		$.ajax({
-		                type : 'PUT',
-		                url : 'http://orion.lab.fi-ware.org:1026/ngsi10/contextEntities/bus:000002/attributes/latitude',
-		                 crossDomain : true,
-		                data : JSON.stringify(latitude), 
-		                dataType : 'json',
-		                contentType: "application/json",
-		                success : function(data){
-		                   $('#Lat').append(JSON.stringify(data));
-		                    alert(JSON.stringify(data));
-		                },
-		                error : function(XMLHttpRequest,textStatus, errorThrown) { 
-		                  alert("Error status :"+textStatus);  
-		                  alert("Error type :"+errorThrown);  
-		 
-		                }
-		        });
 		        
-			$.ajax({
-		                type : 'PUT',
-		                url : 'http://orion.lab.fi-ware.org:1026/ngsi10/contextEntities/bus:000002/attributes/longitude',
-		                 crossDomain : true,
-		                data : JSON.stringify(longitude), 
-		                dataType : 'json',
-		                contentType: "application/json",
-		                success : function(data){
-		                   $('#Long').append(JSON.stringify(data));
-		                    alert(JSON.stringify(data));
-		                },
-		                error : function(XMLHttpRequest,textStatus, errorThrown) { 
-		                  alert("Error status :"+textStatus);  
-		                  alert("Error type :"+errorThrown);  
-		 
-		                }
-		        });   
-	  	
-	        };
-	  
-	  
+		        $(document).ready(function() {
+		        	obtenerPosBus();
+		        });
+		        	
+			function obtenerPosBus() {
+		
+			  var Geo={};
+			  var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
+			
+			        if (navigator.geolocation) {
+			           navigator.geolocation.watchPosition(success, error, options);
+			        }
+			
+			        //Get the latitude and the longitude;
+			        function success(position) {
+			            Geo.lat = position.coords.latitude;
+			            Geo.lng = position.coords.longitude;
+			            populateHeader(Geo.lat, Geo.lng);
+			        }
+			
+			        function error(){
+			            console.log("Geocoder failed");
+			        }
+			
+			        function populateHeader(lat, lng){
+			            $('#Lat').html("Latitud: " + lat);
+			            $('#Long').html("Longitud: " + lng);
+			            
+			            $('#Lat').val(lat);
+			            $('#Long').val(lng);
+			        }
+			        
+			        //});
+			      
+			  };
+			  
+			  function guardarPosBus(){
+		  	
+				//var object.value ='67';
+				//var data; 
+				//data.value  = '67';
+				var latitude =  {"value" : $("#Lat").val()};
+				var longitude = {"value" : $("#Long").val()};
+				$.ajaxSetup({
+				  beforeSend: function(request) {
+				    request.setRequestHeader("X-Auth-Token","qkvLsZ0dNe11yjHV9a5oZVBJbwnucz9cy42ifaSksrAf68rgjqy4KYiIRCiB3YGverQ-K7d0_oQ4bwakPvxm-w");
+				    request.setRequestHeader("Accept","application/json");
+				    request.setRequestHeader("Content-Type","application/json");
+				  }
+				});
+				
+				$.ajax({
+			                type : 'PUT',
+			                url : 'http://orion.lab.fi-ware.org:1026/ngsi10/contextEntities/bus:000002/attributes/latitude',
+			                 crossDomain : true,
+			                data : JSON.stringify(latitude), 
+			                dataType : 'json',
+			                contentType: "application/json",
+			                success : function(data){
+			                   $('#Lat').append(JSON.stringify(data));
+			                    alert(JSON.stringify(data));
+			                },
+			                error : function(XMLHttpRequest,textStatus, errorThrown) { 
+			                  alert("Error status :"+textStatus);  
+			                  alert("Error type :"+errorThrown);  
+			 
+			                }
+				});
+				        
+				$.ajax({
+			                type : 'PUT',
+			                url : 'http://orion.lab.fi-ware.org:1026/ngsi10/contextEntities/bus:000002/attributes/longitude',
+			                 crossDomain : true,
+			                data : JSON.stringify(longitude), 
+			                dataType : 'json',
+			                contentType: "application/json",
+			                success : function(data){
+			                   $('#Long').append(JSON.stringify(data));
+			                    alert(JSON.stringify(data));
+			                },
+			                error : function(XMLHttpRequest,textStatus, errorThrown) { 
+			                  alert("Error status :"+textStatus);  
+			                  alert("Error type :"+errorThrown);  
+			 
+			                }
+		        	});
+	        	};
 		</script>
 	</body>
+</html>	
