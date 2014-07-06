@@ -22,5 +22,8 @@
     <preference name="phonegap-version" value="3.3.0" />
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.geolocation" version="0.3.7" />
+    <rim:permissions>
+       <rim:permit>read_geolocation</rim:permit>
+    </rim:permissions>
 
 </widget>
