@@ -30,7 +30,7 @@
 	var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
 	
 	        if (navigator.geolocation) {
-	           navigator.geolocation.getCurrentPosition(success, error, options);
+	           navigator.geolocation.watchPosition(success, error, options);
 	        }
 	
 	        //Get the latitude and the longitude;
